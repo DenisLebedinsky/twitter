@@ -56,7 +56,7 @@ class TweetTableViewCell: UITableViewCell {
     private let tweetTextContentLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "/Applications/Xcode.app/Contents /Developer/Platforms/iPhoneOS.platform/Library/Develop er/CoreSimulator/Profiles/Runtimes/iOS .simruntime/  Contents/Resources/Runt imeRoot/S ystem/Library /PrivateFram eworks/UIKitCore.framework/UIKitCore (0x11 7775658) and /Applications/Xcode.app/Contents/ Developer/Platforms/iPhoneOS.platform/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/R"
+        label.text = "Build an application using Redis for your chance to win up to $2,200 USD in cash, swag, & more!"
         
         label.numberOfLines = 0
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C26EA9C2886127E00D5F109 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C26EA9B2886127E00D5F109 /* ProfileViewController.swift */; };
 		7C85F7172884A49D00611904 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C85F7162884A49D00611904 /* TweetTableViewCell.swift */; };
 		7CA998122874D3E6005CD7D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA998112874D3E6005CD7D1 /* AppDelegate.swift */; };
 		7CA998142874D3E6005CD7D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA998132874D3E6005CD7D1 /* SceneDelegate.swift */; };
@@ -17,9 +18,11 @@
 		7CA9982A2874D6E1005CD7D1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA998292874D6E1005CD7D1 /* SearchViewController.swift */; };
 		7CA9982C2874D702005CD7D1 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9982B2874D702005CD7D1 /* NotificationsViewController.swift */; };
 		7CA9982E2874D747005CD7D1 /* DirectMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9982D2874D747005CD7D1 /* DirectMessagesViewController.swift */; };
+		7CFE37A6288891100009A074 /* ProfileTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE37A5288891100009A074 /* ProfileTableViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C26EA9B2886127E00D5F109 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7C85F7162884A49D00611904 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		7CA9980E2874D3E6005CD7D1 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA998112874D3E6005CD7D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		7CA998292874D6E1005CD7D1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7CA9982B2874D702005CD7D1 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		7CA9982D2874D747005CD7D1 /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
+		7CFE37A5288891100009A074 /* ProfileTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,10 +49,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C26EA9A2886120B00D5F109 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				7C26EA9B2886127E00D5F109 /* ProfileViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		7C85F7152884A45600611904 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7C85F7162884A49D00611904 /* TweetTableViewCell.swift */,
+				7CFE37A5288891100009A074 /* ProfileTableViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -87,6 +100,7 @@
 		7CA998252874D66E005CD7D1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7C26EA9A2886120B00D5F109 /* General */,
 				7CA998262874D680005CD7D1 /* Core */,
 			);
 			path = Controllers;
@@ -179,7 +193,9 @@
 				7CA9982C2874D702005CD7D1 /* NotificationsViewController.swift in Sources */,
 				7CA998142874D3E6005CD7D1 /* SceneDelegate.swift in Sources */,
 				7CA998282874D6C5005CD7D1 /* HomeViewController.swift in Sources */,
+				7C26EA9C2886127E00D5F109 /* ProfileViewController.swift in Sources */,
 				7CA9982E2874D747005CD7D1 /* DirectMessagesViewController.swift in Sources */,
+				7CFE37A6288891100009A074 /* ProfileTableViewHeader.swift in Sources */,
 				7C85F7172884A49D00611904 /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
