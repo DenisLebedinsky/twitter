@@ -28,4 +28,10 @@ final class ProfileViewViewModel: ObservableObject {
             }
             .store(in: &subscribtion)
     }
+    
+    func getFormattedDate(with date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM YYYY"
+        return dateFormatter.string(from: date)
+    }
 }

@@ -14,6 +14,21 @@ class HomeViewController: UIViewController {
     private var viewModal = HomeViewViewModel()
     private var subscriptions: Set<AnyCancellable> = []
     
+    private lazy var composeTweetButton: UIButton = {
+        let button = UIButton(type: .system, primaryAction: UIAction{ [weak self] _ in
+            self?.navigateToTweetComposer()
+        })
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .tweeterBlueColor
+        button.tintColor = .white
+        let plusSign = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .bold))
+        button.setImage(plusSign, for: .normal)
+        button.layer.cornerRadius = 30
+        button.clipsToBounds = true
+        return button
+    }()
+    
     private func configureNavigationBar(){
         let size:CGFloat = 32
         let logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
@@ -38,6 +53,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(timelineTableView)
+        view.addSubview(composeTweetButton)
         configureNavigationBar()
         
         timelineTableView.delegate = self
@@ -71,6 +87,18 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         timelineTableView.frame = view.frame
+        configureConstraints()
+    }
+    
+    private func configureConstraints(){
+        let composeTweetButtonConstraints = [
+            composeTweetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            composeTweetButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120),
+            composeTweetButton.widthAnchor.constraint(equalToConstant: 60),
+            composeTweetButton.heightAnchor.constraint(equalToConstant: 60)
+        ]
+        
+        NSLayoutConstraint.activate(composeTweetButtonConstraints)
     }
     
     private func handleAuthentication(){
@@ -79,6 +107,12 @@ class HomeViewController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: false)
         }
+    }
+    
+    private func navigateToTweetComposer(){
+        let vc = UINavigationController(rootViewController: TweetComposeViewController())
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
