@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Combine
 
 class HomeViewController: UIViewController {
+    
+    private var viewModal = HomeViewViewModel()
+    private var subscriptions: Set<AnyCancellable> = []
     
     private func configureNavigationBar(){
         let size:CGFloat = 32
@@ -37,6 +42,30 @@ class HomeViewController: UIViewController {
         
         timelineTableView.delegate = self
         timelineTableView.dataSource = self
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(didTapSignOut))
+        
+        bindViews()
+    }
+    
+    func completeUserOnboarding() {
+        let vc = ProfileDataFormViewController()
+        present(vc, animated: true)
+    }
+    
+    func bindViews(){
+        viewModal.$user.sink { [weak self] user in
+            guard let user = user else { return }
+            if !user.isUserOnboarded {
+                self?.completeUserOnboarding()
+            }
+        }
+        .store(in: &subscriptions)
+    }
+    
+    @objc private func didTapSignOut(){
+        try? Auth.auth().signOut()
+        handleAuthentication()
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,9 +73,20 @@ class HomeViewController: UIViewController {
         timelineTableView.frame = view.frame
     }
     
+    private func handleAuthentication(){
+        if Auth.auth().currentUser == nil {
+            let vc = UINavigationController(rootViewController: OnboardingViewController())
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.navigationBar.isHidden = false
+        handleAuthentication()
+        viewModal.retreviewUser()
     }
     
     @objc private func didTapProfile(){
@@ -87,6 +127,4 @@ extension HomeViewController: TweetTableViewCellDelegate {
     func tweetTableViewCellDidTapShare() {
         print("share")
     }
-    
-    
 }
