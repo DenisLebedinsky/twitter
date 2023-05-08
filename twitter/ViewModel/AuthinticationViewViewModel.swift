@@ -61,6 +61,7 @@ final class AuthinticationViewViewModel: ObservableObject {
             } receiveValue: { state in
                 print("adding user record to database: \(state)")
             }
+            .store(in: &subscribtions)
 
     }
     

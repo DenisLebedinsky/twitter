@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7C26EA9C2886127E00D5F109 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C26EA9B2886127E00D5F109 /* ProfileViewController.swift */; };
 		7C2F1C952A02E61F0010BCFC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F1C942A02E61F0010BCFC /* StorageManager.swift */; };
+		7C61FCED2A098E9000FE3483 /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C61FCEC2A098E9000FE3483 /* ProfileViewViewModel.swift */; };
+		7C61FCF02A0995BE00FE3483 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C61FCEF2A0995BE00FE3483 /* SDWebImage */; };
 		7C6F620329D9B8B400300603 /* AuthinticationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6F620229D9B8B400300603 /* AuthinticationViewViewModel.swift */; };
 		7C6F620629D9C1A900300603 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6F620529D9C1A900300603 /* AuthManager.swift */; };
 		7C6F620829D9F29D00300603 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6F620729D9F29D00300603 /* LoginViewController.swift */; };
@@ -46,6 +48,7 @@
 /* Begin PBXFileReference section */
 		7C26EA9B2886127E00D5F109 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7C2F1C942A02E61F0010BCFC /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		7C61FCEC2A098E9000FE3483 /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 		7C6F620229D9B8B400300603 /* AuthinticationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthinticationViewViewModel.swift; sourceTree = "<group>"; };
 		7C6F620529D9C1A900300603 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		7C6F620729D9F29D00300603 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 				7C7EF4BA29D618CC00336B62 /* FirebaseDatabase in Frameworks */,
 				7C7EF4B629D618CC00336B62 /* FirebaseAuth in Frameworks */,
 				7C7EF4C229D618CC00336B62 /* FirebaseFirestoreSwift in Frameworks */,
+				7C61FCF02A0995BE00FE3483 /* SDWebImage in Frameworks */,
 				7C7EF4C029D618CC00336B62 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				7C7EF4C429D618CC00336B62 /* FirebaseStorage in Frameworks */,
 				7C7EF4BE29D618CC00336B62 /* FirebaseFirestore in Frameworks */,
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				7C6F620229D9B8B400300603 /* AuthinticationViewViewModel.swift */,
+				7C61FCEC2A098E9000FE3483 /* ProfileViewViewModel.swift */,
 				7CC6BBBC29DF4A7F00D0AE0D /* HomeViewViewModel.swift */,
 				7CC6BBC029DF51BE00D0AE0D /* ProfileDataFormViewViewModel.swift */,
 			);
@@ -240,6 +245,7 @@
 				7C7EF4C129D618CC00336B62 /* FirebaseFirestoreSwift */,
 				7C7EF4C329D618CC00336B62 /* FirebaseStorage */,
 				7C7EF4C529D618CC00336B62 /* FirebaseStorageCombine-Community */,
+				7C61FCEF2A0995BE00FE3483 /* SDWebImage */,
 			);
 			productName = twitter;
 			productReference = 7CA9980E2874D3E6005CD7D1 /* twitter.app */;
@@ -271,6 +277,7 @@
 			mainGroup = 7CA998052874D3E6005CD7D1;
 			packageReferences = (
 				7C7EF4B429D618CC00336B62 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7C61FCEE2A0995BD00FE3483 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 7CA9980F2874D3E6005CD7D1 /* Products */;
 			projectDirPath = "";
@@ -307,6 +314,7 @@
 				7CA998122874D3E6005CD7D1 /* AppDelegate.swift in Sources */,
 				7CC6BBBD29DF4A7F00D0AE0D /* HomeViewViewModel.swift in Sources */,
 				7CD405B529E3214A00B75D8A /* _UIImage.swift in Sources */,
+				7C61FCED2A098E9000FE3483 /* ProfileViewViewModel.swift in Sources */,
 				7C7EF4CB29D6247700336B62 /* RegisterViewController.swift in Sources */,
 				7CC6BBC129DF51BE00D0AE0D /* ProfileDataFormViewViewModel.swift in Sources */,
 				7CA9982C2874D702005CD7D1 /* NotificationsViewController.swift in Sources */,
@@ -530,6 +538,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7C61FCEE2A0995BD00FE3483 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		7C7EF4B429D618CC00336B62 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -541,6 +557,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7C61FCEF2A0995BE00FE3483 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C61FCEE2A0995BD00FE3483 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		7C7EF4B529D618CC00336B62 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7C7EF4B429D618CC00336B62 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

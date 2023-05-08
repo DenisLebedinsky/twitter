@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import UIKit
 import FirebaseStorage
+import FirebaseAuth
 
 final class ProfileDataFormViewViewModel: ObservableObject {
     
@@ -16,10 +17,11 @@ final class ProfileDataFormViewViewModel: ObservableObject {
     @Published var displayName: String?
     @Published var username: String?
     @Published var bio: String?
-    @Published var avatarpath: String?
+    @Published var avatarPath: String?
     @Published var imageData: UIImage?
     @Published var isFormValid: Bool = false
     @Published var error: String = ""
+    @Published var isOnboardingFinished: Bool = false
     
     func validateUserProfileForm(){
         guard let displayName = displayName, displayName.count > 2 else {
@@ -54,7 +56,7 @@ final class ProfileDataFormViewViewModel: ObservableObject {
                 StorageManager.shared.getDownloadURL(for: metaData.path)
             })
             .sink { [weak self] completion in
-             
+                
                 switch completion {
                 case .failure(let error):
                     self?.error = error.localizedDescription
@@ -63,7 +65,7 @@ final class ProfileDataFormViewViewModel: ObservableObject {
                     self?.updateUserData()
                 }
             } receiveValue: { [weak self] url in
-                self?.avatarpath = url.absoluteString
+                self?.avatarPath = url.absoluteString
             }
             .store(in: &subscription)
     }
@@ -72,7 +74,26 @@ final class ProfileDataFormViewViewModel: ObservableObject {
         guard let displayName,
               let username,
               let bio,
-              let avatarpath else {return}
+              let avatarPath,
+              let id = Auth.auth().currentUser?.uid else {return}
         
+        let updateFileds: [String: Any] = [
+            "displayName": displayName,
+            "username": username,
+            "bio": bio,
+            "avatarPath": avatarPath,
+            "isUserOnboarded": true
+        ]
+        
+        DatabaseManager.shared.collectionUsers(updateFields: updateFileds, for: id)
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    print(error)
+                    self?.error = error.localizedDescription
+                }
+            } receiveValue: { [weak self] onboardingState in
+                self?.isOnboardingFinished = onboardingState
+            }
+            .store(in: &subscription)
     }
 }

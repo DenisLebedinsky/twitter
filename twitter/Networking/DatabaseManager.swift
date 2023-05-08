@@ -32,7 +32,9 @@ class DatabaseManager {
             .eraseToAnyPublisher()
     }
     
-    func collectionUsers(updateFields: [String: Any], for id: String){
-        db.collection(usersPath)
+    func collectionUsers(updateFields: [String: Any], for id: String)-> AnyPublisher<Bool, Error>{
+        return db.collection(usersPath).document(id).updateData(updateFields)
+            .map { _ in true }
+            .eraseToAnyPublisher()
     }
 }
