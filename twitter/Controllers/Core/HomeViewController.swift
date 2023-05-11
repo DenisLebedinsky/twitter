@@ -45,11 +45,11 @@ class HomeViewController: UIViewController {
     }
     
     private let timelineTableView: UITableView = {
-       let tableView = UITableView()
+        let tableView = UITableView()
         tableView .register(TweetTableViewCell.self, forCellReuseIdentifier: TweetTableViewCell.identifier)
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(timelineTableView)
@@ -74,6 +74,13 @@ class HomeViewController: UIViewController {
             guard let user = user else { return }
             if !user.isUserOnboarded {
                 self?.completeUserOnboarding()
+            }
+        }
+        .store(in: &subscriptions)
+        
+        viewModal.$tweets.sink { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.timelineTableView.reloadData()
             }
         }
         .store(in: &subscriptions)
@@ -131,7 +138,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModal.tweets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,6 +146,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        let tweetModel = viewModal.tweets[indexPath.row]
+        cell.configureTweet(with: tweetModel.author.displayName,
+                            username: tweetModel.author.username,
+                            tweetTextConent: tweetModel.tweetContent,
+                            avatarPath: tweetModel.author.avatarPath
+        )
         cell.delegate = self
         
         return cell

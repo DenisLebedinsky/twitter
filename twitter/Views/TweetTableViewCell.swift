@@ -29,15 +29,12 @@ class TweetTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 25
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds =  true
-        imageView.image = UIImage(systemName: "person")
-        imageView.backgroundColor = .red
         
         return imageView
     }()
     
     private let displayNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Denis Lebedinsky"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -45,7 +42,6 @@ class TweetTableViewCell: UITableViewCell {
     
     private let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@Lebedinsky"
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,10 +50,8 @@ class TweetTableViewCell: UITableViewCell {
     }()
     
     private let tweetTextContentLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Build an application using Redis for your chance to win up to $2,200 USD in cash, swag, & more!"
-        
         label.numberOfLines = 0
         
         return label
@@ -68,7 +62,7 @@ class TweetTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "bubble.left"), for: .normal)
         button.tintColor = .systemGray2
-    
+        
         return button
     }()
     
@@ -77,7 +71,7 @@ class TweetTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "arrow.2.squarepath"), for: .normal)
         button.tintColor = .systemGray2
-    
+        
         return button
     }()
     
@@ -86,7 +80,7 @@ class TweetTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = .systemGray2
-    
+        
         return button
     }()
     
@@ -95,7 +89,7 @@ class TweetTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         button.tintColor = .systemGray2
-    
+        
         return button
     }()
     
@@ -134,6 +128,13 @@ class TweetTableViewCell: UITableViewCell {
         retweetButton.addTarget(self, action: #selector(didTapRetweet), for: .touchUpInside)
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+    }
+    
+    func configureTweet(with displayName: String, username: String, tweetTextConent: String, avatarPath: String){
+        displayNameLabel.text = displayName
+        usernameLabel.text = "@\(username)"
+        tweetTextContentLabel.text = tweetTextConent
+        avatarImageView.sd_setImage(with: URL(string: avatarPath))
     }
     
     private func configureConstraints(){
@@ -194,5 +195,5 @@ class TweetTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }

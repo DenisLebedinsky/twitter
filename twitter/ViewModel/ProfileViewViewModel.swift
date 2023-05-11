@@ -18,7 +18,7 @@ final class ProfileViewViewModel: ObservableObject {
     
     func retreviewUser(){
         guard let id = Auth.auth().currentUser?.uid else { return }
-        DatabaseManager.shared.collectionUsers(retreive: id)
+        DatabaseManager.shared.collectionUsers(retrieve: id)
             .sink {[weak self] complition in
                 if case .failure(let error) = complition {
                     self?.error = error.localizedDescription

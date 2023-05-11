@@ -21,7 +21,7 @@ final class TweetComposeViewViewModel: ObservableObject {
     
     func getUserData(){
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        DatabaseManager.shared.collectionUsers(retreive: userID)
+        DatabaseManager.shared.collectionUsers(retrieve: userID)
             .sink { [weak self] compliton in
                 if case .failure(let error) = compliton {
                     self?.error = error.localizedDescription
@@ -38,7 +38,7 @@ final class TweetComposeViewViewModel: ObservableObject {
     
     func dispatchTweet(){
         guard let user = user else { return }
-        let tweet = Tweet(author: user, tweetContent: tweetContent, likesCount: 0, likers: [], isReply: false, parentReferences: nil)
+        let tweet = Tweet(author: user, authorID: user.id, tweetContent: tweetContent, likesCount: 0, likers: [], isReply: false, parentReferences: nil)
         DatabaseManager.shared.collectionsTweets(dispatch: tweet)
             .sink {[weak self] compliton in
                 if case .failure(let error) = compliton {
